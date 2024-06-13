@@ -1,6 +1,7 @@
 import express from "express";
 
 
+
 const app = express();
 //Enable express json body parser Middleware
 app.use(express.json())
@@ -28,6 +29,24 @@ app.get('/api/courses/:id',(req,res)=>{
 
     res.send(course)
 })
+
+//Update course
+app.put('/api/courses/:id',(req,res)=>{
+    const  {id,courseName} = req.body
+    
+   
+    const course  = courses.find(c => c.id == id )
+   if(!course) res.status(400).send("Course is not found")
+
+    const courseUpdate ={
+        id:id,
+        name:courseName
+    }
+
+    courses.push(courseUpdate)
+    res.send(course)
+})
+
 //Working with post request
 app.post('/api/courses',(req,res) =>{
    const  {courseName} = req.body
