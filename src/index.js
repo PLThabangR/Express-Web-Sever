@@ -32,6 +32,11 @@ app.get('/api/courses/:id',(req,res)=>{
 app.post('/api/courses',(req,res) =>{
    const  {courseName} = req.body
 
+   //Input validation
+   if(!courseName || courseName.length<3 ){
+    res.status(400).send("Name required and length ")
+   }
+
     const course ={
         id:courses.length +1,
         name:courseName
