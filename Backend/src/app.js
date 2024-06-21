@@ -1,5 +1,6 @@
 import express, { urlencoded } from 'express';
 import cors from "cors";
+import dbConnection from "./database/dbConnection.js";
 
 //instance of express
 const app = express();
@@ -21,6 +22,8 @@ app.use(cors({
 const port = 5000
 
 function start(){
+    //Calling the DB function
+    dbConnection()
     app.listen(port,  ()=>{
         console.log(`Server running on port ${port}`)
     })
@@ -28,3 +31,4 @@ function start(){
 
 //Calling start function 
 start()
+
