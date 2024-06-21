@@ -1,7 +1,13 @@
-import express from 'express'
+import express, { urlencoded } from 'express'
 
 //instance of express
 const app = express();
+
+//Using middleware
+app.use(express.json())
+app.use((express.urlencoded({extended:true})))
+
+
 //Declare variables
 const port = 5000
 
