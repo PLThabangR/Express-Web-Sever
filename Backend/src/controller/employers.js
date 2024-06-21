@@ -69,3 +69,22 @@ export const updateEmployee = async(req,res,next)=>{
     console.log(`Cannot update employee due to error ${err}`)
    }
 }
+
+export const deleteEmployee=async (req,res,next)=>{
+    const {id} = req.params
+    let employee = await EmployeeModal.findById(id)
+
+    if(!employee){
+        return next(res.status(404).json({
+        success:false,
+        message:"Employee not found!!"}))
+    }
+    //We have to use await so the user can be deleted
+    await employee.deleteOne();
+    res.status(200).json({
+        success:true,
+        message:`${employee} is deleted`,
+        
+    })
+
+}

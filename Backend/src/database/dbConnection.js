@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 const dbConnection = () => {
   
-        mongoose.connect("mongodb+srv://thabang:thabang@backend1.ex12spp.mongodb.net/?retryWrites=true",
+        mongoose.connect(,
             {dbName:"BACKEND_TUT"}
         ).then(()=>{
             console.log("Succesfully Connected to database")
