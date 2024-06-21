@@ -1,6 +1,7 @@
 import express, { urlencoded } from 'express';
 import cors from "cors";
 import dbConnection from "./database/dbConnection.js";
+import { employeeRouter } from './router/employees/employeeRouter.js';
 
 //instance of express
 const app = express();
@@ -28,6 +29,9 @@ function start(){
         console.log(`Server running on port ${port}`)
     })
 }
+
+//Use the routes
+app.use(employeeRouter)
 
 //Calling start function 
 start()
