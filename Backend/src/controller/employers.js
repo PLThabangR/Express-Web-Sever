@@ -42,3 +42,30 @@ export const getEmployee= async(req,res,next) =>{
 
 
 }
+
+//Update employee
+export const updateEmployee = async(req,res,next)=>{
+
+    const  {id} = req.params;
+    const {name,email,phone} = req.body
+
+   try{
+    let employee = await EmployeeModal.findById(id)
+
+    if(!employee){
+        return next(res.status(404).json({
+        success:false,
+        message:"Employee not found!!"}))
+    }
+
+     employee =  await EmployeeModal.findByIdAndUpdate(id,{name,email,phone},{new:true,useFindAndModify:false,runValidators:true})
+
+     res.status(200).json({
+        success:true,
+        message:"Employee updated",
+        employee
+     })
+   }catch(err){
+    console.log(`Cannot update employee due to error ${err}`)
+   }
+}

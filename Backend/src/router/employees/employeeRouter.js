@@ -1,5 +1,5 @@
 import {Router} from "express"
-import { addEmployee, getEmployee } from "../../controller/employers.js"
+import { addEmployee, getEmployee, updateEmployee } from "../../controller/employers.js"
 
 const router = Router()
 
@@ -7,6 +7,7 @@ const router = Router()
 router.post('/addEmployee',addEmployee)
 //Get User 
 router.get("/getAllEmployees",getEmployee)
+router.put("/updateEmployees/:id",updateEmployee)
 
 
 
