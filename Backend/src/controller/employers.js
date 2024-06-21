@@ -3,6 +3,7 @@
 
 import { EmployeeModal } from "../models/employeeSchema.js"
 
+//ADD users
 export const addEmployee = async (req,res,next)=>{
 const {name,email,phone } = req.body
 
@@ -20,5 +21,24 @@ const employee = await EmployeeModal.create({name,email,phone});
         message:"Employee created!!",
         employee
     }) 
+
+}
+
+//Get USer
+export const getEmployee= async(req,res,next) =>{
+
+    //Create a variable
+    try{
+        const employee = await EmployeeModal.find();
+        res.status(200).json({
+            success:"true",
+            employee
+              
+        })
+
+    }catch(e){
+        console.log("An error accured while trying to find user")
+    }
+
 
 }
