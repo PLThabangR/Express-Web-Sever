@@ -1,11 +1,13 @@
 import express, { urlencoded } from 'express';
 import cors from "cors";
+import {config} from "dotenv"
 import dbConnection from "./database/dbConnection.js";
 import { employeeRouter } from './router/employees/employeeRouter.js';
 
 //instance of express
 const app = express();
-
+//Setup dotenv
+config({path:"./config/config.env"})
 //Using in built middleware
 app.use(express.json())
 app.use((express.urlencoded({extended:true})))

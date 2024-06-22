@@ -1,8 +1,8 @@
 import mongoose from 'mongoose'
 
 const dbConnection = () => {
-  
-        mongoose.connect(,
+  const MONGO_URI="mongodb+srv://thabang:thabang@backend1.ex12spp.mongodb.net/?retryWrites=true"
+        mongoose.connect(MONGO_URI,
             {dbName:"BACKEND_TUT"}
         ).then(()=>{
             console.log("Succesfully Connected to database")
