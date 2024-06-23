@@ -1,5 +1,6 @@
 import { UserModal } from "../models/userSchema.js";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken"
 
 //Register new user
 export const register = async(req,res,next) =>{
@@ -60,19 +61,33 @@ export const login=async(req,res,next)=>{
             message:"Invalid Password or Email"
         }))
     }
+    //Create a token for this user using the user ID 
+    // expiresIn: 60 * 60
+    //expiresIn: '1h'
+    //This cookie wil expire after seven days
+    const token = await jwt.sign({id:user._id},'abcdefghijklm',{expiresIn:'7d'})
 
-    //if password and email are okay
-    res.status(200).json({
+//Creating a cookie
+    res.status(200).cookie("token",token,{
+        httpOnly:true,
+        expires: new Date(Date.now()+7*24*60*60*1000)
+    }).json({
         success:true,
-        message:"User Logged in"
+        message:"USer logged in",
+        user:{
+            name:user.name,
+            email:user.email,
+            phone:user.phone
+        },
+        token
     })
-
+    
 }
 
 //Get user
 
 export const getUser= async (req,res,next)=>{
-    
+
 
 
 }
