@@ -86,9 +86,24 @@ export const login=async(req,res,next)=>{
 
 //Get user
 export const getUser= async (req,res,next)=>{
+    //FInding the user
+    const user = await UserModal.findById(req.user._id)
+    if(!user){
+        return next(
+            res.status(404).json({
+                success:false,
+                message:"User not found!!"
+            })
+        )
+    }
 res.status(200).json({
     succcess:true,
-    message:"User found!!"
+    user:{
+        name:user.name,
+        email:user.email,
+        phone:user.phone
+    }
+    
 })
 
 

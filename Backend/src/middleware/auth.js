@@ -17,7 +17,7 @@ export const isAuthenticated = async(req,res,next)=>{
     const decoded = await jwt.verify(token,secret);
     //find the user by ID which comes from the decoded
      req.user = await UserModal.findById(decoded.id)
-    //Call next to move on
+    //Call next to move on to the next function
     next()
 
 }
