@@ -8,7 +8,12 @@ const UserSchema = new mongoose.Schema({
         maxlength:[32,"Name cannot exceed 32 characters"]
     },
     email:{type:String,required:[true,"Email is required"], unique:true,},
-    phone:{type:Number}
+    phone:{type:Number},
+    password:{
+        type:String,
+        required:[true,"Passwaord is required"],
+        minlength:[5,"Password must have more than 4 characters"]
+    }
 })
 
 //Create a model the schema needs a model
