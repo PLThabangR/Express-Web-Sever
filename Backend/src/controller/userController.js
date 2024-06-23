@@ -57,14 +57,22 @@ export const login=async(req,res,next)=>{
     if(!isPasswordMatched){
         return next(res.status(400).json({
             success:false,
-            message:"Invalid password or email"
+            message:"Invalid Password or Email"
         }))
     }
 
     //if password and email are okay
     res.status(200).json({
         success:true,
-        message:"USer Logged in"
+        message:"User Logged in"
     })
+
+}
+
+//Get user
+
+export const getUser= async (req,res,next)=>{
+    
+
 
 }
