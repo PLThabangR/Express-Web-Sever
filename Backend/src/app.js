@@ -26,7 +26,7 @@ const port = 5000
 
 function start(){
     //Calling the DB function
-    dbConnection()
+  //  dbConnection()
     app.listen(port,  ()=>{
         console.log(`Server running on port ${port}`)
     })
@@ -35,6 +35,6 @@ function start(){
 //Use the routes
 app.use(employeeRouter)
 
-//Calling start function 
+//Calling  then function to start application
 start()
 
