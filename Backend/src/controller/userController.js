@@ -20,6 +20,4 @@ export const register = async(req,res,next) =>{
     message:"User Registered",
     user
     })
-
-
 }

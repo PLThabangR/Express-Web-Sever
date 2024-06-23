@@ -3,6 +3,7 @@ import cors from "cors";
 import {config} from "dotenv"
 import dbConnection from "./database/dbConnection.js";
 import { employeeRouter } from './router/employees/employeeRouter.js';
+import { userRouter } from './router/userRouter.js';
 
 //instance of express
 const app = express();
@@ -26,7 +27,7 @@ const port = 5000
 
 function start(){
     //Calling the DB function
-  //  dbConnection()
+    dbConnection()
     app.listen(port,  ()=>{
         console.log(`Server running on port ${port}`)
     })
@@ -34,6 +35,8 @@ function start(){
 
 //Use the routes
 app.use(employeeRouter)
+//Register user route
+app.use("/api/v1/user",userRouter)
 
 //Calling  then function to start application
 start()
