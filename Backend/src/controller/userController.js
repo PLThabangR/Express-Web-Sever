@@ -65,9 +65,10 @@ export const login=async(req,res,next)=>{
     // expiresIn: 60 * 60
     //expiresIn: '1h'
     //This cookie wil expire after seven days
-    const token = await jwt.sign({id:user._id},'abcdefghijklm',{expiresIn:'7d'})
+    const secret ='abcdefghijklm'
+    const token = await jwt.sign({id:user._id},secret,{expiresIn:'7d'})
 
-//Creating a cookie
+//Creating a cookie and return user data
     res.status(200).cookie("token",token,{
         httpOnly:true,
         expires: new Date(Date.now()+7*24*60*60*1000)
@@ -81,13 +82,14 @@ export const login=async(req,res,next)=>{
         },
         token
     })
-    
 }
 
 //Get user
-
 export const getUser= async (req,res,next)=>{
-
+res.status(200).json({
+    succcess:true,
+    message:"User found!!"
+})
 
 
 }

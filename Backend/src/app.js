@@ -1,6 +1,7 @@
 import express, { urlencoded } from 'express';
 import cors from "cors";
-import {config} from "dotenv"
+import {config} from "dotenv";
+import cookieParser from 'cookie-parser'
 import dbConnection from "./database/dbConnection.js";
 import { employeeRouter } from './router/employees/employeeRouter.js';
 import { userRouter } from './router/userRouter.js';
@@ -19,7 +20,8 @@ app.use(cors({
     methods:["GET","POST","DELETE","PUT"],
     credentials:true
 }))
-
+//Use cookie parser middleware
+app.use(cookieParser())
 
 
 //Declare variables
