@@ -108,3 +108,13 @@ res.status(200).json({
 
 
 }
+
+export const logout = async (req,res,next)=>{
+    res.status(200).cookie("token","",{
+        httpOnly:true,
+        expires:new Date(Date.now())
+    }).json({
+        success:true,
+        message:"User logged out!"
+    })
+}
