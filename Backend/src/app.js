@@ -38,8 +38,9 @@ function start(){
 
 //Use the routes
 app.use(employeeRouter)
-//Register user route
+//user route
 app.use("/api/v1/user",userRouter)
+//Task route
 app.use("/api/v1/task",taskRouter)
 
 //Calling  then function to start application

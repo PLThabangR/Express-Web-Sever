@@ -8,7 +8,7 @@ const TodoSchema = new mongoose.Schema({
         },
     description:{type:String,
          required:[true,"Description is required"],
-        minlength: [10,"Description must contain more than 9 characters"]
+        minlength: [5,"Description must contain more than 5 characters"]
          },
     createdBy:{
         type:mongoose.Schema.ObjectId,
