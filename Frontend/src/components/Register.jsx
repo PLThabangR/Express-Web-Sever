@@ -1,9 +1,12 @@
 import 'bulma/css/bulma.min.css';
 import React, { useState } from 'react';
 import axios from 'axios'
-import {toast} from "react-hot-toast"
+import {toast} from "react-hot-toast";
+import { Navigate,useNavigate } from 'react-router-dom';
 
 const Register = () => {
+    //navigation
+    const navigate = useNavigate();
     //USe states
     const [name,setName] = useState("");
     const [email,setEmail] = useState("");
@@ -14,11 +17,13 @@ const Register = () => {
 const handleRegister =async(e)=>{
     e.preventDefault()
     try{
+        //Sending data to the backend
         const {data} = await axios.post("http://localhost:5000/api/v1/user/register",
             {name,email,phone,password},{withCrendials:true,headers:{"Content-type":"application/json"}}
         )
 
             toast.success(data.message)
+            navigate('/login')
 
     }catch(e){
         toast.success(e.response.data.message)
@@ -28,7 +33,7 @@ const handleRegister =async(e)=>{
 
   return (
  <>
-    <form className='box'>
+    <form className='box' onSubmit={handleRegister}>
         <h1 className='has-text-centered title is-1'>Register</h1>
 
 <div className="field">
@@ -42,13 +47,13 @@ const handleRegister =async(e)=>{
       <i className="fas fa-check"></i>
     </span>
   </div>
-  <p className="help is-success">This username is available</p>
+
 </div>
 
 <div className="field">
   <label className="label">Email</label>
   <div className="control has-icons-left has-icons-right">
-    <input className="input is-danger" type="email"  onChange={(e)=> setEmail(e.target.value)} placeholder="Email input" value={email} required/>
+    <input className="input is-success" type="email"  onChange={(e)=> setEmail(e.target.value)} placeholder="Email input" value={email} required/>
     <span className="icon is-small is-left">
       <i className="fas fa-envelope"></i>
     </span>
@@ -56,7 +61,7 @@ const handleRegister =async(e)=>{
       <i className="fas fa-exclamation-triangle"></i>
     </span>
   </div>
-  <p className="help is-danger">This email is invalid</p>
+ 
 </div>
 
 <div className="field">
@@ -70,7 +75,7 @@ const handleRegister =async(e)=>{
       <i className="fas fa-check"></i>
     </span>
   </div>
-  <p className="help is-success">This username is available</p>
+  
 </div>
 
 <div className="field">
@@ -84,7 +89,6 @@ const handleRegister =async(e)=>{
       <i className="fas fa-check"></i>
     </span>
   </div>
-  <p className="help is-success">This password is available</p>
 </div>
 
 <div className="field is-grouped">

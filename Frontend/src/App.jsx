@@ -7,6 +7,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from  "./components/home";
 import Login from "./components/Login";
 import Register from './components/Register';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -22,7 +23,9 @@ function App() {
       <Route element={<Login/>} path="/login"/>
       <Route element={<Register/>} path="/register"/>
     </Routes>
+    <Toaster/>
     </div>
+
   </>
   )
 }
