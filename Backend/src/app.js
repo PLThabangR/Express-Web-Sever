@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser'
 import dbConnection from "./database/dbConnection.js";
 import { employeeRouter } from './router/employees/employeeRouter.js';
 import { userRouter } from './router/userRouter.js';
+import { taskRouter } from './router/taskRouter.js';
 
 //instance of express
 const app = express();
@@ -39,6 +40,7 @@ function start(){
 app.use(employeeRouter)
 //Register user route
 app.use("/api/v1/user",userRouter)
+app.use("/api/v1/task",taskRouter)
 
 //Calling  then function to start application
 start()

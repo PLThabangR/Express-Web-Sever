@@ -10,8 +10,11 @@ const TodoSchema = new mongoose.Schema({
          required:[true,"Description is required"],
         minlength: [10,"Description must contain more than 9 characters"]
          },
+    createdBy:{
+        type:mongoose.Schema.ObjectId,
+    }
     
 })
 
 //Create a model the schema needs a model
-export const TodoModal = mongoose.model("Todo",TodoSchema)
+export const TodoModal = mongoose.model("Task",TodoSchema)
