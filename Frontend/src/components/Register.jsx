@@ -11,12 +11,13 @@ const Register = () => {
 
 //handle register
 const handleRegister =async(e)=>{
+    e.preventDefault()
     try{
         const {data} = await axios.post("http://localhost:5000/api/v1/user/register",
             {name,email,phone,password},{withCrendials:true,headers:{"Content-type":"application/json"}}
         )
 
-        
+
     }catch(e){
 
     }
