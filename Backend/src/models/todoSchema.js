@@ -4,11 +4,11 @@ import mongoose from "mongoose"
 const TodoSchema = new mongoose.Schema({
     title:{type:String,
         required:[true,"Title is required"],
-        minlength: [4,"Title must contain more than 3 characters"]
+        minlength: [3,"Title must contain more than 2 characters"]
         },
     description:{type:String,
          required:[true,"Description is required"],
-        minlength: [5,"Description must contain more than 5 characters"]
+        minlength: [4,"Description must contain more than 3 characters"]
          },
     createdBy:{
         type:mongoose.Schema.ObjectId,
