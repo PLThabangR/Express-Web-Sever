@@ -16,6 +16,7 @@ app.use(express.json())
 app.use((express.urlencoded({extended:true})))
 
 //Using third party middlewaere 
+//USe cors to connect fronend and backend
 app.use(cors({
     origin: ["http://localhost:5173","http://localhost:5174"],
     methods:["GET","POST","DELETE","PUT"],
@@ -23,6 +24,7 @@ app.use(cors({
 }))
 //Use cookie parser middleware
 app.use(cookieParser())
+
 
 
 //Declare variables
