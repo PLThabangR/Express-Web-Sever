@@ -1,6 +1,7 @@
 import 'bulma/css/bulma.min.css';
 import React, { useState } from 'react';
 import axios from 'axios'
+import {toast} from "react-hot-toast"
 
 const Register = () => {
     //USe states
@@ -17,8 +18,10 @@ const handleRegister =async(e)=>{
             {name,email,phone,password},{withCrendials:true,headers:{"Content-type":"application/json"}}
         )
 
+            toast.success(data.message)
 
     }catch(e){
+        toast.success(e.response.data.message)
 
     }
 }
