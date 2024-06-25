@@ -29,7 +29,7 @@ const handlelogout =async(e)=>{
     <button className="button is-primary">Home</button>
     </Link>
 
-    <Link onClick={handlelogout}> 
+    <Link to={"/login"} onClick={handlelogout}> 
     <button className="button is-primary">Logout</button>
     </Link>
 

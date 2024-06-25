@@ -71,7 +71,7 @@ export const login=async(req,res,next)=>{
 //Creating a cookie and return user data
     res.status(200).cookie("token",token,{
         httpOnly:true,
-        expires: new Date(Date.now()+7*24*60*60*1000)
+        expires: new Date(Date.now()+7*24*60*60*1000) //Setting the token to expire after 7 days
     }).json({
         success:true,
         message:"USer logged in",
@@ -86,7 +86,8 @@ export const login=async(req,res,next)=>{
 
 //Get user
 export const getUser= async (req,res,next)=>{
-    //FInding the user
+    //FInding the user 
+    //User is logged already
     const user = await UserModal.findById(req.user._id)
     if(!user){
         return next(

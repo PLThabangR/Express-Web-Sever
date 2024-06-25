@@ -29,17 +29,15 @@ const handleLogin =async(e)=>{
             toast.success(data.message)
             //Set authentication 
             setIsAuthenticated(true)
-            navigate('/')
-            // if(isAuthenticated){
-               
-            // }
-           
-
     }catch(e){
         toast.success(e.response.data.message)
-
-    }
+    }   
 }
+
+if(isAuthenticated){
+    console.log("This user is authenticated")
+    navigate('/')
+ }
 
   return (
  <>

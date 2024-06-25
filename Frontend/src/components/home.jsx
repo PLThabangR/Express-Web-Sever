@@ -1,11 +1,25 @@
-import React from 'react'
+import React,{useContext} from 'react'
+import Navbar from './navbar';
 import 'bulma/css/bulma.min.css';
-const home = () => {
+import { Context } from './context/AppWrapper';
+import { useNavigate } from 'react-router-dom';
+
+
+const Home = () => {
+
+    //navigation
+const navigate = useNavigate()
+const {isAuthenticated} = useContext(Context) 
+//Allow only authenticated user in the home component
+if(!isAuthenticated){
+    navigate("/")
+}
+
   return (
     <>
 
         <div className="box"> 
-     
+        <Navbar/>
           </div>
 
 
@@ -14,4 +28,4 @@ const home = () => {
   )
 }
 
-export default home
+export default Home
