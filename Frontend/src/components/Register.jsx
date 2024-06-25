@@ -35,8 +35,8 @@ const handleRegister =async(e)=>{
 const {isAuthenticated} = useContext(Context) 
 
 useEffect(()=>{
-  if(!isAuthenticated){
-    navigate("/login")
+  if(isAuthenticated){
+    navigate("/")
 }
 },[isAuthenticated])
 

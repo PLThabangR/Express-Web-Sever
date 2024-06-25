@@ -36,9 +36,9 @@ const handleLogin =async(e)=>{
 }
 
 useEffect(()=>{
-  if(!isAuthenticated){
-    navigate("/login")
-    console.log("Going to home screen")
+  if(isAuthenticated){
+    navigate("/")
+    
 }
 },[isAuthenticated])
 

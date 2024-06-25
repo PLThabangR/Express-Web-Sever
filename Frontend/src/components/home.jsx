@@ -49,7 +49,7 @@ useEffect(()=>{
 <div className="field">
   <label className="label">Description</label>
   <div className="control has-icons-left has-icons-right">
-    <input className="input is-success" type="text" placeholder="Description" onChange={(e)=>setDescription(e.target.value)} value={description} required/>
+    <textarea className="textarea is-success"  placeholder="Description" onChange={(e)=>setDescription(e.target.value)} value={description} required></textarea>
     <span className="icon is-small is-left">
       <i className="fas fa-password"></i>
     </span>
