@@ -1,9 +1,12 @@
-import React from 'react'
+import {useContext} from 'react'
 import {Link} from "react-router-dom";
 import axios from 'axios';
 import {toast} from "react-hot-toast";
+import { Context } from './context/AppWrapper';
 
-const navbar = () => {
+const Navbar = () => {
+       //import authentication context
+const {setIsAuthenticated} = useContext(Context) 
 //handle logout
 const handlelogout =async(e)=>{
     e.preventDefault()
@@ -14,8 +17,8 @@ const handlelogout =async(e)=>{
         );
 
             toast.success(data.message)
-            
-
+            //Set is authenticated to false because the user has looged out
+            setIsAuthenticated(false)
     }catch(e){
         toast.success(e.response.data.message)
 
@@ -43,4 +46,4 @@ const handlelogout =async(e)=>{
   )
 }
 
-export default navbar
+export default Navbar

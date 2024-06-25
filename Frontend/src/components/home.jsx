@@ -12,7 +12,7 @@ const navigate = useNavigate()
 const {isAuthenticated} = useContext(Context) 
 //Allow only authenticated user in the home component
 if(!isAuthenticated){
-    navigate("/")
+    navigate("/login")
 }
 
   return (
