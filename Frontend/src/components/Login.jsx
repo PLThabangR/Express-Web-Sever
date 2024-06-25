@@ -1,10 +1,14 @@
 import 'bulma/css/bulma.min.css';
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import axios from 'axios'
 import {toast} from "react-hot-toast";
-import { Navigate,useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { Context } from './context/AppWrapper';
+import Navbar from './navbar';
 
 const Login = () => {
+    //Use context
+    const {isAuthenticated,setIsAuthenticated,user,setUser} = useContext(Context) 
     //navigation
     const navigate = useNavigate();
     //USe states
@@ -12,8 +16,8 @@ const Login = () => {
    
     const [password,setPassword] = useState("");
 
-//handle register
-const handleRegister =async(e)=>{
+//handle logn
+const handleLogin =async(e)=>{
     e.preventDefault()
     try{
         //Sending data to the backend
@@ -22,7 +26,12 @@ const handleRegister =async(e)=>{
         )
 
             toast.success(data.message)
-            navigate('/')
+            //Set authentication 
+            setIsAuthenticated(true)
+            if(isAuthenticated){
+                navigate('/')
+            }
+           
 
     }catch(e){
         toast.success(e.response.data.message)
@@ -32,7 +41,8 @@ const handleRegister =async(e)=>{
 
   return (
  <>
-    <form className='box' onSubmit={handleRegister}>
+ <Navbar/>
+    <form className='box' onSubmit={handleLogin}>
         <h1 className='has-text-centered title is-1'>Login</h1>
 
 
@@ -67,7 +77,7 @@ const handleRegister =async(e)=>{
 
 <div className="field is-grouped">
   <div className="control">
-    <button className="button is-primary">Submit</button>
+    <button className="button is-primary">Login</button>
   </div>
   </div>
     </form>

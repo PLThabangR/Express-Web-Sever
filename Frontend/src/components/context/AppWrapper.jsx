@@ -2,7 +2,7 @@ import {createContext,useState,useContext} from 'react'
 
 
 //Create context for authentication and set value to false
- const Context = createContext({
+ export const Context = createContext({
   isAuthenticated:false
 })
 
@@ -21,5 +21,5 @@ return (
 )
 }
 
-export const useAuthenticationContext = ()=> useContext(Context)
+
 export default AppWrapper

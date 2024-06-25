@@ -7,3 +7,17 @@
   min-width: 100vh;
   
 }
+nav{
+  padding: 20px 40px;
+  background-color: rgb(255, 255, 255);
+  color :#fff;
+  display:flex;
+  justify-content: flex-end;
+  gap:20px 
+
+}
+
+nav a{
+color:#fff;
+
+}
