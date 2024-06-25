@@ -31,7 +31,7 @@ const getUser = async ()=>{
 }
 //Call this function
 getUser()
- },[isAuthenticated])
+ },[isAuthenticated,setIsAuthenticated])
   return (
   <>
   <div className="content"> 

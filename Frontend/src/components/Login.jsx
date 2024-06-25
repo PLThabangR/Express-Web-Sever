@@ -1,5 +1,5 @@
 import 'bulma/css/bulma.min.css';
-import { useState,useContext } from 'react';
+import { useState,useContext,useEffect } from 'react';
 import axios from 'axios'
 import {toast} from "react-hot-toast";
 import { useNavigate } from 'react-router-dom';
@@ -30,14 +30,17 @@ const handleLogin =async(e)=>{
             //Set authentication 
             setIsAuthenticated(true)
     }catch(e){
-        toast.success(e.response.data.message)
+      console.log(toast.success(e.response.data.message))
+        toast.error(e.response.data.message)
     }   
 }
 
-if(isAuthenticated){
-    console.log("This user is authenticated")
-    navigate('/')
- }
+useEffect(()=>{
+  if(!isAuthenticated){
+    navigate("/login")
+    console.log("Going to home screen")
+}
+},[isAuthenticated])
 
   return (
  <>

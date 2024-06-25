@@ -6,12 +6,12 @@ import { Context } from './context/AppWrapper';
 
 const Navbar = () => {
        //import authentication context
-const {setIsAuthenticated} = useContext(Context) 
+const {isAuthenticated,setIsAuthenticated} = useContext(Context) 
 //handle logout
 const handlelogout =async(e)=>{
     e.preventDefault()
     try{
-        //Sending data to the backend
+        //Sending data to the backend to logout user
         const {data} = await axios.get("http://localhost:5000/api/v1/user/logout",
            {withCredentials:true}
         );
@@ -20,28 +20,26 @@ const handlelogout =async(e)=>{
             //Set is authenticated to false because the user has looged out
             setIsAuthenticated(false)
     }catch(e){
-        toast.success(e.response.data.message)
+        toast.error(e.response.data.message)
 
     }
 }
 
   return (
     <>
-<nav>
-<Link to={"/"}> 
+{isAuthenticated &&(
+    <nav>
+    <Link to={"/"}> 
     <button className="button is-primary">Home</button>
     </Link>
 
     <Link to={"/login"} onClick={handlelogout}> 
     <button className="button is-primary">Logout</button>
     </Link>
-
-</nav>
-    
-
-    
-    
-    
+    </nav>
+    )
+}
+  
     </>
   )
 }

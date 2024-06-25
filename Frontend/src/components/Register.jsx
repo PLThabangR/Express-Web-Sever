@@ -1,5 +1,5 @@
 import 'bulma/css/bulma.min.css';
-import React, { useState,useContext } from 'react';
+import React, { useState,useContext,useEffect } from 'react';
 import axios from 'axios'
 import {toast} from "react-hot-toast";
 import { useNavigate } from 'react-router-dom';
@@ -27,16 +27,18 @@ const handleRegister =async(e)=>{
             navigate('/login')
 
     }catch(e){
-        toast.success(e.response.data.message)
+        toast.error(e.response.data.message)
 
     }
 }
 //Import fileds from context
 const {isAuthenticated} = useContext(Context) 
 
-if(isAuthenticated){
-    navigate("/")
+useEffect(()=>{
+  if(!isAuthenticated){
+    navigate("/login")
 }
+},[isAuthenticated])
 
   return (
  <>
