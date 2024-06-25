@@ -11,7 +11,7 @@ const handlelogout =async(e)=>{
         //Sending data to the backend
         const {data} = await axios.get("http://localhost:5000/api/v1/user/logout",
            {withCrendials:true}
-        )
+        );
 
             toast.success(data.message)
             

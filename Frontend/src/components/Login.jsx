@@ -1,5 +1,5 @@
 import 'bulma/css/bulma.min.css';
-import React, { useState,useContext } from 'react';
+import { useState,useContext } from 'react';
 import axios from 'axios'
 import {toast} from "react-hot-toast";
 import { useNavigate } from 'react-router-dom';
@@ -22,15 +22,17 @@ const handleLogin =async(e)=>{
     try{
         //Sending data to the backend
         const {data} = await axios.post("http://localhost:5000/api/v1/user/login",
-            {email,password},{withCrendials:true,headers:{"Content-type":"application/json"}}
+            {email,password},{withCredentials:true,headers:{"Content-type":"application/json"}}
         )
+       
 
             toast.success(data.message)
             //Set authentication 
             setIsAuthenticated(true)
-            if(isAuthenticated){
-                navigate('/')
-            }
+            navigate('/')
+            // if(isAuthenticated){
+               
+            // }
            
 
     }catch(e){

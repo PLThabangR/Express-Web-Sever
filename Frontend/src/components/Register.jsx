@@ -19,7 +19,7 @@ const handleRegister =async(e)=>{
     try{
         //Sending data to the backend
         const {data} = await axios.post("http://localhost:5000/api/v1/user/register",
-            {name,email,phone,password},{withCrendials:true,headers:{"Content-type":"application/json"}}
+            {name,email,phone,password},{withCredentials:true,headers:{"Content-type":"application/json"}}
         )
 
             toast.success(data.message)
