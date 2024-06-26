@@ -2,6 +2,7 @@
 import React,{useState,useEffect} from 'react';
 import axios from 'axios';
 import DeleteTask from './DeleteTask';
+import { Link } from 'react-router-dom';
 
 const GetUserTasks = () => {
     const [tasks,setTasks] = useState([]);
@@ -33,7 +34,7 @@ const getUserTasks = async ()=>{
   //Allow only authenticated user in the home component
 useEffect(()=>{     
     //Call the getTask function
-  //  getUserTasks()
+ //  getUserTasks()
     console.log("call me when the is change")
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[tasks])
@@ -46,7 +47,6 @@ useEffect(()=>{
         return(
           <div className="card" key={element._id}>
           <div className="card-content">
-            <h1>{element._id}</h1>
           <p className="card-header-title">{element.title}</p>
             <div className="content">
               {element.description}
@@ -54,7 +54,7 @@ useEffect(()=>{
           </div>
           <div className="card">
           <footer className="card-footer">
-            <a href="#" className="card-footer-item">Edit</a>
+          <Link to={`/updateTask/${element._id}`}><a  className="card-footer-item">Edit</a></Link>
             <DeleteTask userID={element._id}/>
           </footer>
         </div>

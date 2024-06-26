@@ -7,6 +7,7 @@ import Register from './components/Register';
 import { Toaster } from 'react-hot-toast';
 import { Context } from './components/context/AppWrapper';
 import axios from 'axios';
+import UpdateTask from "./components/UpdateTask"
 
 function App() {
  //Find if user is logged in using context
@@ -43,6 +44,7 @@ getUser()
       <Route element={<Home/>} path="/"/>
       <Route element={<Login/>} path="/login"/>
       <Route element={<Register/>} path="/register"/>
+      <Route element={<UpdateTask/>} path="/updateTask/:id"/>
     </Routes>
     <Toaster/>
     </div>

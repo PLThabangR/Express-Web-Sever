@@ -2,22 +2,27 @@
 import {useState} from 'react';
 import axios from 'axios';
 import {toast} from "react-hot-toast";
+import { useParams,useNavigate } from 'react-router-dom';
 
-const CreateTasks = () => {
+const UpdateTasks = () => {
      //USe states variable
    const [title,setTitle] = useState("");
    const [description,setDescription] = useState("");
+// Get the userId param from the URL.
+   const {id}=useParams()
 
+   const navigate = useNavigate();
    //Create Task 
-   const createTask=async(e)=>{
+   const updateTask=async(e)=>{
     e.preventDefault()
     try{
-        const {data}= await axios.post("http://localhost:5000/api/v1/task/create",{title,description},
+         const {data}=await axios.put(`http://localhost:5000/api/v1/task/update/${id}`,{title,description},
             {
             withCredentials:true,
             headers:{"Content-type":"application/json"}
         })
-        setTitle(data.task.title)
+        navigate("/")
+       // setTitle(data.task.title)
         toast.success(data.message)
     }catch(e){
         toast.error(e.response.data.message);
@@ -26,8 +31,8 @@ const CreateTasks = () => {
   return (
     <>
     <div>
-    <form className='box' onSubmit={createTask}>
-        <h1 className='has-text-centered title is-1'>Create Task</h1>
+    <form className='box' onSubmit={updateTask}>
+        <h1 className='has-text-centered title is-1'>Update Task</h1>
 <div className="field">
   <label className="label">Title</label>
   <div className="control has-icons-left has-icons-right">
@@ -57,7 +62,7 @@ const CreateTasks = () => {
 
 <div className="field is-grouped">
   <div className="control">
-    <button className="button is-primary is-small">Create Task</button>
+    <button className="button is-primary is-small">Update Task</button>
   </div>
   </div>
     </form>
@@ -68,4 +73,5 @@ const CreateTasks = () => {
   )
 }
 
-export default CreateTasks
+export default UpdateTasks
+

@@ -3,7 +3,8 @@ import {toast} from "react-hot-toast";
 import PropTypes  from "prop-types"
 const DeleteTask = (props) => {
 //Delete Task 
-const deleteTask=async()=>{
+const deleteTask=async(e)=>{
+    e.preventDefault()
     try{
         const {data}= await axios.delete(`http://localhost:5000/api/v1/task/delete/${props.userID}`,
             {
