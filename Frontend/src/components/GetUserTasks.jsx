@@ -33,7 +33,7 @@ const getUserTasks = async ()=>{
   //Allow only authenticated user in the home component
 useEffect(()=>{     
     //Call the getTask function
-    getUserTasks()
+  //  getUserTasks()
     console.log("call me when the is change")
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[tasks])

@@ -18,13 +18,11 @@ const deleteTask=async()=>{
 
   return (
     <>
-    
-    <h1>{props.userID}</h1>
     <a onClick={deleteTask} className="card-footer-item">Delete</a>
     </>
   )
 }
-
+//Use prop-types to validate props
 DeleteTask.propTypes={
     userID:PropTypes.node,
 }
