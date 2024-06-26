@@ -33,8 +33,15 @@ const getUserTasks = async ()=>{
     const {data} = await axios.get("http://localhost:5000/api/v1/task/tasks",{
       withCredentials:true});
     //if data is fetched successfully set user
-    console.log(data)
-    setTasks(data)
+    //console.log(data.task)
+
+    //data.task.forEach(a=>{
+      //console.log(a.title)
+    //})
+
+    
+    setTasks(data.task)
+    console.log(tasks)
 
    
   }catch(e){
@@ -88,7 +95,7 @@ const getUserTasks = async ()=>{
   </div>
   </div>
     </form>
-
+     
         </div>
         <div className="has-8-cols">
     {tasks.length >0? (
