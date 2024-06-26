@@ -4,13 +4,14 @@ import 'bulma/css/bulma.min.css';
 import { Context } from './context/AppWrapper';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import GetUserTasks from './GetUserTasks';
 
 
 const Home = () => {
   //use states
    //USe states variable
    const [title,setTitle] = useState("");
-   const [tasks,setTasks] = useState([]);
+  
    
    const [description,setDescription] = useState("");
     //navigation
@@ -22,34 +23,10 @@ useEffect(()=>{
   if(!isAuthenticated){
     navigate("/login")
 }
-//Call the getTask function
-getUserTasks()
+
 },[isAuthenticated])
 
-//Get usr tasks
-const getUserTasks = async ()=>{
 
-  try{
-    const {data} = await axios.get("http://localhost:5000/api/v1/task/tasks",{
-      withCredentials:true});
-    //if data is fetched successfully set user
-    //console.log(data.task)
-
-    //data.task.forEach(a=>{
-      //console.log(a.title)
-    //})
-
-    
-    setTasks(data.task)
-    console.log(tasks)
-
-   
-  }catch(e){
-    setTasks([])
-    console.log("Caanot fetch tasks")
-   
-  }
-}
 
   return (
     <>
@@ -98,28 +75,9 @@ const getUserTasks = async ()=>{
      
         </div>
         <div className="has-8-cols">
-    {tasks.length >0? (
-      tasks.map(element =>{
-        return(
-          <div className="card" key={element._id}>
-          <div className="card-content">
-          <p className="card-header-title">{element.title}</p>
-            <div className="content">
-              {element.description}
-            </div>
-          </div>
-          <div className="card">
-          <footer className="card-footer">
-            <a href="#" className="card-footer-item">Edit</a>
-            <a href="#" className="card-footer-item">Delete</a>
-          </footer>
-        </div>
-        </div>
-        )
-      })
-        
-    ):( <p class="card-header-title">No tasks created</p>)}
+       
 
+    <GetUserTasks/>
 
         </div>
     </div>
