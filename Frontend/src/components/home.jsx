@@ -1,9 +1,10 @@
 import {useContext, useEffect,useState} from 'react'
+import axios from 'axios';
 import Navbar from './navbar';
 import 'bulma/css/bulma.min.css';
 import { Context } from './context/AppWrapper';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+
 import GetUserTasks from './GetUserTasks';
 import CreateTasks from './CreateTasks';
 
@@ -19,6 +20,7 @@ useEffect(()=>{
     navigate("/login")
 }
 
+// eslint-disable-next-line react-hooks/exhaustive-deps
 },[isAuthenticated])
 
 

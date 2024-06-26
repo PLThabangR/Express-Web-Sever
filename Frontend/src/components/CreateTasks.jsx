@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React,{useState,useEffect} from 'react';
+import {useState} from 'react';
 import axios from 'axios';
 import {toast} from "react-hot-toast";
 
-const CreateTasks = ({getAllUser}) => {
+const CreateTasks = () => {
      //USe states variable
    const [title,setTitle] = useState("");
    const [description,setDescription] = useState("");

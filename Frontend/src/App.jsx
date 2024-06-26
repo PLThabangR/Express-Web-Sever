@@ -31,10 +31,11 @@ const getUser = async ()=>{
 }
 //Call this function
 getUser()
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  },[isAuthenticated])
   return (
   <>
-  <div className="content"> 
+  <div className="container"> 
      
      
 

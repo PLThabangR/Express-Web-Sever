@@ -1,6 +1,7 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+
 import React,{useState,useEffect} from 'react';
 import axios from 'axios';
+import DeleteTask from './DeleteTask';
 
 const GetUserTasks = () => {
     const [tasks,setTasks] = useState([]);
@@ -24,7 +25,7 @@ const getUserTasks = async ()=>{
      
     }catch(e){
       setTasks([])
-      console.log("Caanot fetch tasks")
+      console.log("Cannot fetch tasks")
      
     }
   }
@@ -33,6 +34,8 @@ const getUserTasks = async ()=>{
 useEffect(()=>{     
     //Call the getTask function
     getUserTasks()
+    console.log("call me when the is change")
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[tasks])
     
   return (
@@ -43,6 +46,7 @@ useEffect(()=>{
         return(
           <div className="card" key={element._id}>
           <div className="card-content">
+            <h1>{element._id}</h1>
           <p className="card-header-title">{element.title}</p>
             <div className="content">
               {element.description}
@@ -51,7 +55,7 @@ useEffect(()=>{
           <div className="card">
           <footer className="card-footer">
             <a href="#" className="card-footer-item">Edit</a>
-            <a href="#" className="card-footer-item">Delete</a>
+            <DeleteTask userID={element._id}/>
           </footer>
         </div>
         </div>
