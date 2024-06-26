@@ -1,16 +1,31 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React,{useState,useEffect} from 'react';
 import axios from 'axios';
+import {toast} from "react-hot-toast";
 
-const CreateTasks = () => {
+const CreateTasks = ({getAllUser}) => {
      //USe states variable
    const [title,setTitle] = useState("");
    const [description,setDescription] = useState("");
 
+   //Create Task 
+   const createTask=async()=>{
+    try{
+        const {data}= await axios.post("http://localhost:5000/api/v1/task/create",{title,description},
+            {
+            withCredentials:true,
+            headers:{"Content-type":"application/json"}
+        })
+        setTitle(data.task.title)
+        toast.success(data.message)
+    }catch(e){
+        toast.error(e.response.data.message);
+    }
+   }
   return (
     <>
     <div>
-    <form className='box'>
+    <form className='box' onSubmit={createTask}>
         <h1 className='has-text-centered title is-1'>Create Task</h1>
 <div className="field">
   <label className="label">Title</label>
@@ -25,7 +40,6 @@ const CreateTasks = () => {
   </div>
  
 </div>
-
 
 <div className="field">
   <label className="label">Description</label>
