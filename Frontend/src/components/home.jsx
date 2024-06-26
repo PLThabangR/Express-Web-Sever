@@ -94,17 +94,17 @@ const getUserTasks = async ()=>{
     {tasks.length >0? (
       tasks.map(element =>{
         return(
-          <div class="card" key={element._id}>
-          <div class="card-content">
-          <p class="card-header-title">{element.title}</p>
-            <div class="content">
+          <div className="card" key={element._id}>
+          <div className="card-content">
+          <p className="card-header-title">{element.title}</p>
+            <div className="content">
               {element.description}
             </div>
           </div>
-          <div class="card">
-          <footer class="card-footer">
-            <a href="#" class="card-footer-item">Edit</a>
-            <a href="#" class="card-footer-item">Delete</a>
+          <div className="card">
+          <footer className="card-footer">
+            <a href="#" className="card-footer-item">Edit</a>
+            <a href="#" className="card-footer-item">Delete</a>
           </footer>
         </div>
         </div>
