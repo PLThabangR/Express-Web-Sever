@@ -30,11 +30,11 @@ const handlelogout =async(e)=>{
 {isAuthenticated &&(
     <nav>
     <Link to={"/"}> 
-    <button className="button is-primary">Home</button>
+    <button className="button is-primary is-normal">Home</button>
     </Link>
 
     <Link to={"/login"} onClick={handlelogout}> 
-    <button className="button is-primary">Logout</button>
+    <button className="button is-primary is-normal">Logout</button>
     </Link>
     </nav>
     )
