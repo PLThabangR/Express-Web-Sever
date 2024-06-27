@@ -24,6 +24,7 @@ const getUser = async ()=>{
     //if data is fetched successfully set user
     setUser(data.user);
     setIsAuthenticated(true);
+    console.log(user.name)
   }catch(e){
     console.log("Caanot fetch authenticated user")
     setIsAuthenticated(false);
@@ -33,6 +34,7 @@ const getUser = async ()=>{
 //Call this function
 getUser()
  // eslint-disable-next-line react-hooks/exhaustive-deps
+ 
  },[isAuthenticated])
   return (
   <>

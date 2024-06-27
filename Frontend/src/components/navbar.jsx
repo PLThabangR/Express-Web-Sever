@@ -6,7 +6,7 @@ import { Context } from './context/AppWrapper';
 
 const Navbar = () => {
        //import authentication context
-const {isAuthenticated,setIsAuthenticated} = useContext(Context) 
+const {isAuthenticated,setIsAuthenticated,user} = useContext(Context) 
 //handle logout
 const handlelogout =async(e)=>{
     e.preventDefault()
@@ -27,8 +27,22 @@ const handlelogout =async(e)=>{
 
   return (
     <>
+ 
+    
 {isAuthenticated &&(
+   
+    
     <nav>
+        <span className="icon-text has-text-info">
+  <span className="icon">
+    <i className="fas fa-info-circle"></i>
+  </span>
+  <h1 className="title is-2">{user.name}</h1>
+</span>
+
+   
+    
+        
     <Link to={"/"}> 
     <button className="button is-primary is-normal">Home</button>
     </Link>

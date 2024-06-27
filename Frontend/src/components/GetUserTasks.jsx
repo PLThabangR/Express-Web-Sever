@@ -1,29 +1,22 @@
 
-import React,{useState,useEffect} from 'react';
+import React,{useState,useEffect,useContext} from 'react';
 import axios from 'axios';
 import DeleteTask from './DeleteTask';
 import { Link } from 'react-router-dom';
+import { Context } from './context/AppWrapper';
 
 const GetUserTasks = () => {
     const [tasks,setTasks] = useState([]);
+    //Use context
+    const { isAuthenticated } = useContext(Context);
     //Get usr tasks
 const getUserTasks = async ()=>{
 
     try{
       const {data} = await axios.get("http://localhost:5000/api/v1/task/tasks",{
-        withCredentials:true});
-      //if data is fetched successfully set user
-      //console.log(data.task)
-  
-      //data.task.forEach(a=>{
-        //console.log(a.title)
-      //})
-  
-      
+        withCredentials:true});      
       setTasks(data.task)
-      console.log(tasks)
   
-     
     }catch(e){
       setTasks([])
       console.log("Cannot fetch tasks")
@@ -34,10 +27,10 @@ const getUserTasks = async ()=>{
   //Allow only authenticated user in the home component
 useEffect(()=>{     
     //Call the getTask function
- //  getUserTasks()
-    console.log("call me when the is change")
+   getUserTasks()
+    
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[tasks])
+    },[isAuthenticated])
     
   return (
     <>

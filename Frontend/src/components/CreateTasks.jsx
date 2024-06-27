@@ -4,10 +4,12 @@ import axios from 'axios';
 import {toast} from "react-hot-toast";
 
 const CreateTasks = () => {
+ 
      //USe states variable
    const [title,setTitle] = useState("");
    const [description,setDescription] = useState("");
-
+//Get user tasks update display
+ 
    //Create Task 
    const createTask=async(e)=>{
     e.preventDefault()
@@ -18,11 +20,15 @@ const CreateTasks = () => {
             headers:{"Content-type":"application/json"}
         })
         setTitle(data.task.title)
+       
+        
         toast.success(data.message)
     }catch(e){
         toast.error(e.response.data.message);
     }
    }
+  
+
   return (
     <>
     <div>
