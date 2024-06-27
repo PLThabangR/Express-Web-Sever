@@ -33,15 +33,6 @@ const handlelogout =async(e)=>{
    
     
     <nav>
-        <span className="icon-text has-text-info">
-  <span className="icon">
-    <i className="fas fa-info-circle"></i>
-  </span>
-  <h1 className="title is-2">{user.name}</h1>
-</span>
-
-   
-    
         
     <Link to={"/"}> 
     <button className="button is-primary is-normal">Home</button>
@@ -50,6 +41,11 @@ const handlelogout =async(e)=>{
     <Link to={"/login"} onClick={handlelogout}> 
     <button className="button is-primary is-normal">Logout</button>
     </Link>
+
+    <button className="button is-success is-light is-normal">
+    <h1 className="title is-4">{user.name}</h1>
+
+    </button>
     </nav>
     )
 }

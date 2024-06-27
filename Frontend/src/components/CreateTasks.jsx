@@ -4,6 +4,10 @@ import axios from 'axios';
 import {toast} from "react-hot-toast";
 
 const CreateTasks = () => {
+  //Refresh page
+  function refreshPage(){ 
+    window.location.reload(); 
+}
  
      //USe states variable
    const [title,setTitle] = useState("");
@@ -23,6 +27,8 @@ const CreateTasks = () => {
        
         
         toast.success(data.message)
+        refreshPage()
+
     }catch(e){
         toast.error(e.response.data.message);
     }
@@ -64,6 +70,7 @@ const CreateTasks = () => {
 <div className="field is-grouped">
   <div className="control">
     <button className="button is-primary is-small">Create Task</button>
+
   </div>
   </div>
     </form>
