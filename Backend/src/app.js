@@ -28,7 +28,7 @@ app.use(cookieParser())
 
 
 //Declare variables
-const port = 5000
+const port = 5000 || process.env.PORT
 
 function start(){
     //Calling the DB function
